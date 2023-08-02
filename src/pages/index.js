@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import { getExcerpt } from '@/utils/excerpt'
@@ -30,6 +32,7 @@ const Index = ({ entries, publication }) => {
 	const [screenSize, setScreenSize] = useState(getCurrentDimension())
 
 	function getCurrentDimension() {
+		if (typeof window === 'undefined') return { width: 100, height: 0 }
 		return {
 			width: window.innerWidth,
 			height: window.innerHeight,
@@ -48,7 +51,7 @@ const Index = ({ entries, publication }) => {
 	}, [screenSize])
 	return (
 		<div className="flex">
-			{screenSize.width > 1100 && (
+			{!(typeof window === 'undefined') && screenSize.width > 1100 && (
 				<div className="absolute left-0 top-0">
 					<aside className="pl-4 mr-2" style={{ width: `${Math.min(screenSize.width / 2 - 390, 500)}px`, marginTop: '72px' }}>
 						<ul className="space-y-4">

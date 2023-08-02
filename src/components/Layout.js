@@ -2,8 +2,10 @@ import Link from 'next/link'
 import Head from 'next/head'
 import ThemeContext from '@/context/theme'
 import Script from 'next/script'
+import { useState } from 'react'
 
 const Layout = ({ publication, children }) => {
+	const [darkToggle, setDarkToggle] = useState(false)
 	if (publication.theme.colorMode === 'DARK' && typeof document !== 'undefined') document.body.classList.add('dark')
 
 	return (
@@ -46,6 +48,10 @@ const Layout = ({ publication, children }) => {
 									</div>
 								</a>
 							</Link>
+							<label className="toggleDarkBtn">
+								<input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
+								<span className="slideBtnTg round"></span>
+							</label>
 							<div className="">
 								{' '}
 								{/* Use flex and justify-end utility classes */}
