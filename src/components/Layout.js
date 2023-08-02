@@ -36,20 +36,25 @@ const Layout = ({ publication, children }) => {
 			<ThemeContext.Provider value={{ theme: publication.theme.colorMode === 'DARK' ? 'dark' : 'light', accentColor: publication.theme.accent.toLowerCase() }}>
 				<div className={publication.theme.colorMode === 'DARK' ? 'dark' : ''}>
 					<div className="dark:bg-gray-900 min-h-screen">
-						<header className="p-4 flex justify-between items-center">
+						<header className="p-4 flex justify-between items-center" style={{ width: '100%' }}>
 							<Link href="/">
 								<a className="flex items-center space-x-4">
 									<div>
 										<div className="flex items-center space-x-2">
-											<p className="black dark:text-gray-600 pb-0.5">Dharma Essays</p>
+											<p className="black dark:text-gray-600 pb-0.5 text-xl">Dharma Essays</p>
 										</div>
 									</div>
 								</a>
 							</Link>
-							<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
-								Mirror
-							</button>
+							<div className="">
+								{' '}
+								{/* Use flex and justify-end utility classes */}
+								<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
+									Mirror
+								</button>
+							</div>
 						</header>
+
 						<main>{children}</main>
 					</div>
 				</div>
