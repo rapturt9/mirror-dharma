@@ -47,7 +47,7 @@ const Layout = ({ publication, children }) => {
 								</a>
 							</Link>
 							<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
-								Subscribe
+								Mirror
 							</button>
 						</header>
 						<main>{children}</main>
