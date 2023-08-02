@@ -16,9 +16,10 @@ const Layout = ({ publication, children }) => {
 						<meta name="og:description" content={publication.description} />
 					</>
 				)}
+				<link rel="icon" href="/logo.ico" />
 				<meta name="twitter:card" content="summary" />
-				<meta name="og:image" content={publication.avatarURL} />
-				<meta name="twitter:image" content={publication.avatarURL} />
+				<meta name="og:image" content="/logo.png" />
+				<meta name="twitter:image" content="/logo.png" />
 				<link rel="alternate" type="application/rss+xml" title={publication.displayName || 'Dharma Essays'} href="/feed.xml" />
 			</Head>
 			<ThemeContext.Provider value={{ theme: publication.theme.colorMode === 'DARK' ? 'dark' : 'light', accentColor: publication.theme.accent.toLowerCase() }}>

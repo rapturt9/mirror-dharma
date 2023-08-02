@@ -32,13 +32,10 @@ const Article = ({ publication, darkMode, entry }) => {
 				<meta name="og:description" content={metaDescription} />
 				<meta name="twitter:title" content={entry.title || 'Dharma Essays'} />
 				<meta name="twitter:description" content={metaDescription} />
-				{entry.cover_image && (
-					<>
-						<meta name="twitter:card" content="summary_large_image" />
-						<meta name="og:image" content={entry.cover_image} />
-						<meta name="twitter:image" content={entry.cover_image} />
-					</>
-				)}
+				<link rel="icon" href="/logo.ico" />
+				<meta name="twitter:card" content="summary" />
+				<meta name="og:image" content="/logo.png" />
+				<meta name="twitter:image" content="/logo.png" />
 			</Head>
 			<article className="max-w-3xl mx-auto py-16 px-4 sm:px-0">
 				<header>
