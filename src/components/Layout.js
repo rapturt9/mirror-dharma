@@ -2,11 +2,19 @@ import Link from 'next/link'
 import Head from 'next/head'
 import ThemeContext from '@/context/theme'
 import Script from 'next/script'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Layout = ({ publication, children }) => {
 	const [darkToggle, setDarkToggle] = useState(false)
 	if (publication.theme.colorMode === 'DARK' && typeof document !== 'undefined') document.body.classList.add('dark')
+
+	useEffect(() => {
+		if (darkToggle) {
+			document.body.classList.add('dark')
+		} else {
+			document.body.classList.remove('dark')
+		}
+	}, [darkToggle])
 
 	return (
 		<>
@@ -43,18 +51,16 @@ const Layout = ({ publication, children }) => {
 								<a className="flex items-center space-x-4">
 									<div>
 										<div className="flex items-center space-x-2">
-											<p className="black dark:text-gray-600 pb-0.5 text-xl">Dharma Essays</p>
+											<p className="black dark:text-gray-200 pb-0.5 text-xl">Dharma Essays</p>
 										</div>
 									</div>
 								</a>
 							</Link>
-							<label className="toggleDarkBtn">
-								<input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
-								<span className="slideBtnTg round"></span>
-							</label>
-							<div className="">
-								{' '}
-								{/* Use flex and justify-end utility classes */}
+							<div className="flex items-center">
+								<label className="toggleDarkBtn mr-4">
+									<input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
+									<span className="slideBtnTg round"></span>
+								</label>
 								<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
 									Mirror
 								</button>
