@@ -9,7 +9,7 @@ const Layout = ({ publication, children }) => {
 		<>
 			<Head>
 				<title>{publication.displayName || 'Dharma Essays'}</title>
-				<meta name="og:title" content={`${publication.displayName} — Mirror`} />
+				<meta name="og:title" content={publication.displayName || 'Dharma Essays'} />
 				{publication.description && (
 					<>
 						<meta name="description" content={publication.description} />
