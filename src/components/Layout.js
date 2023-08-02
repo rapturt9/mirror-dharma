@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import ThemeContext from '@/context/theme'
+import Script from 'next/script'
 
 const Layout = ({ publication, children }) => {
 	if (publication.theme.colorMode === 'DARK' && typeof document !== 'undefined') document.body.classList.add('dark')
@@ -22,6 +23,16 @@ const Layout = ({ publication, children }) => {
 				<meta name="twitter:image" content="/logo.png" />
 				<link rel="alternate" type="application/rss+xml" title={publication.displayName || 'Dharma Essays'} href="/feed.xml" />
 			</Head>
+			<Script src="https://www.googletagmanager.com/gtag/js?id=G-LR58DS1T5K" />
+			<Script id="google-analytics">
+				{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-LR58DS1T5K');
+        `}
+			</Script>
 			<ThemeContext.Provider value={{ theme: publication.theme.colorMode === 'DARK' ? 'dark' : 'light', accentColor: publication.theme.accent.toLowerCase() }}>
 				<div className={publication.theme.colorMode === 'DARK' ? 'dark' : ''}>
 					<div className="dark:bg-gray-900 min-h-screen">

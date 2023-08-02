@@ -11,6 +11,7 @@ import ImageSizesContext from '@/context/image_sizes'
 import highlightCode from '@/utils/highlightMarkdown'
 import { getEntry, getEntryPaths } from '@/data/entries'
 import { components, uriTransformer } from '@/utils/markdown'
+import Script from 'next/script'
 
 const Article = ({ publication, darkMode, entry }) => {
 	// If there's an image we want to use the second paragraph as the description instead of the first one.
@@ -37,6 +38,16 @@ const Article = ({ publication, darkMode, entry }) => {
 				<meta name="og:image" content="/logo.png" />
 				<meta name="twitter:image" content="/logo.png" />
 			</Head>
+			<Script src="https://www.googletagmanager.com/gtag/js?id=G-LR58DS1T5K" />
+			<Script id="google-analytics">
+				{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-LR58DS1T5K');
+        `}
+			</Script>
 			<article className="max-w-3xl mx-auto py-16 px-4 sm:px-0">
 				<header>
 					<h1 className="text-gray-900 dark:text-gray-200 text-3xl sm:text-5xl font-bold">{entry.title}</h1>
