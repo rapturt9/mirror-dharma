@@ -14,8 +14,7 @@ import { components, uriTransformer } from '@/utils/markdown'
 import Script from 'next/script'
 import { useState } from 'react'
 
-const Article = ({ publication, darkMode, entry }) => {
-	const [url, setUrl] = useState(null)
+const Article = ({ publication, darkMode, entry, digest }) => {
 	// If there's an image we want to use the second paragraph as the description instead of the first one.
 	// We'll also strip the markdown from the description (to avoid things like links showing up) and trim the newline at the end
 	const metaDescription = String(
@@ -25,24 +24,19 @@ const Article = ({ publication, darkMode, entry }) => {
 			.use(remarkStringify)
 			.processSync(entry.body.split('\n\n')[entry.cover_image ? 1 : 0])
 	).slice(0, -1)
-
+	console.log(publication)
 	console.log(entry)
-
-	const settingUrl = url => {
-		const formattedUrl = url.replace(/\\&/g, '&')
-		setUrl(formattedUrl)
-	}
 
 	const formatBody = body => {
 		let bodyLines = body.split('\n')
 
 		try {
 			if (bodyLines[bodyLines.length - 1].startsWith('https://embed.0xecho.com')) {
-				if (!url) settingUrl(bodyLines[bodyLines.length - 2])
 				bodyLines.pop()
 			}
 			if (bodyLines[bodyLines.length - 2].startsWith('https://embed.0xecho.com')) {
-				if (!url) settingUrl(bodyLines[bodyLines.length - 2])
+				const formattedUrl = bodyLines[bodyLines.length - 2].replace(/\\&/g, '&')
+				console.log(formattedUrl)
 				bodyLines.pop()
 				bodyLines.pop()
 			}
@@ -52,7 +46,6 @@ const Article = ({ publication, darkMode, entry }) => {
 
 		return bodyLines.join('\n')
 	}
-
 	return (
 		<>
 			<Head>
@@ -88,7 +81,7 @@ const Article = ({ publication, darkMode, entry }) => {
 						</ReactMarkdown>
 					</ImageSizesContext.Provider>
 				</div>
-				{url && <iframe src={url} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>}
+				<iframe src={`https://embed.0xecho.com.ipns.page/?color-theme=light&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>
 				{publication.mailingListURL && (
 					<div className="flex items-center justify-center mb-10">
 						<a href={publication.mailingListURL} target="_blank" rel="noreferrer" className="bg-blue-100 dark:bg-yellow-400 dark:bg-opacity-20 font-medium text-blue-500 dark:text-yellow-300 rounded-lg p-4 hover:ring-4 ring-blue-100 dark:ring-yellow-400 dark:ring-opacity-20 transition duration-300 text-base shadow-xs hover:shadow-xs sm:text-lg sm:px-10 inline-flex items-center space-x-2">
@@ -151,6 +144,7 @@ export async function getStaticProps({ params: { digest } }) {
 				publication,
 				darkMode,
 				entry: { ...entry, body: String(body) },
+				digest,
 			},
 			revalidate: 1 * 60 * 60, // refresh article contents every hour
 		}
