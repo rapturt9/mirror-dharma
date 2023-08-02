@@ -1,6 +1,7 @@
 The MIT License (MIT)
 
 Copyright (c) Miguel Piedrafita <soy@miguelpiedrafita.com>
+
 Copyright (c) [2023] Ram Potham
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
