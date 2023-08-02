@@ -9,6 +9,23 @@ import ImageSizesContext from '@/context/image_sizes'
 import { getEntries } from '@/data/entries'
 import Sidebar from '@/components/Sidebar' // Import the Sidebar component
 
+function formatBody(body) {
+	let bodyLines = body.split('\n')
+
+	try {
+		if (bodyLines[bodyLines.length - 1].startsWith('https://embed.0xecho.com')) {
+			bodyLines.pop()
+		}
+		if (bodyLines[bodyLines.length - 2].startsWith('https://embed.0xecho.com')) {
+			bodyLines.pop()
+			bodyLines.pop()
+		}
+	} catch (error) {
+		console.error(error)
+	}
+
+	return bodyLines.join('\n')
+}
 const Index = ({ entries, publication }) => (
 	<div className="flex">
 		<Sidebar entries={entries} /> {/* Add the Sidebar component */}
@@ -31,11 +48,11 @@ const Index = ({ entries, publication }) => (
 					<div className="prose lg:prose-lg dark:prose-dark mb-8 mt-4">
 						<ImageSizesContext.Provider value={entry.image_sizes}>
 							<ReactMarkdown renderers={components} allowDangerousHtml={true}>
-								{getExcerpt(entry.body)}
+								{getExcerpt(formatBody(entry.body))}
 							</ReactMarkdown>
 						</ImageSizesContext.Provider>
 					</div>
-					{entry.body.split('\n\n').length > 4 && <LinkButton href={`/${entry.transaction}`}>Continue Reading</LinkButton>}
+					{formatBody(entry.body).split('\n\n').length > 4 && <LinkButton href={`/${entry.transaction}`}>Continue Reading</LinkButton>}
 				</article>
 			))}
 			{entries.length === 0 && (

@@ -36,7 +36,7 @@ const Layout = ({ publication, children }) => {
 			<ThemeContext.Provider value={{ theme: publication.theme.colorMode === 'DARK' ? 'dark' : 'light', accentColor: publication.theme.accent.toLowerCase() }}>
 				<div className={publication.theme.colorMode === 'DARK' ? 'dark' : ''}>
 					<div className="dark:bg-gray-900 min-h-screen">
-						<header className="p-4">
+						<header className="p-4 flex justify-between items-center">
 							<Link href="/">
 								<a className="flex items-center space-x-4">
 									<div>
@@ -46,6 +46,9 @@ const Layout = ({ publication, children }) => {
 									</div>
 								</a>
 							</Link>
+							<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
+								Subscribe
+							</button>
 						</header>
 						<main>{children}</main>
 					</div>
