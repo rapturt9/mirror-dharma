@@ -29,10 +29,10 @@ function formatBody(body) {
 	return bodyLines.join('\n')
 }
 const Index = ({ entries, publication }) => {
-	const [screenSize, setScreenSize] = useState(getCurrentDimension())
+	const [screenSize, setScreenSize] = useState(null)
 
 	function getCurrentDimension() {
-		if (typeof window === 'undefined') return { width: 100, height: 0 }
+		if (typeof window === 'undefined') return null
 		return {
 			width: window.innerWidth,
 			height: window.innerHeight,
@@ -40,18 +40,25 @@ const Index = ({ entries, publication }) => {
 	}
 
 	useEffect(() => {
-		const updateDimension = () => {
+		const handleResize = () => {
 			setScreenSize(getCurrentDimension())
 		}
-		window.addEventListener('resize', updateDimension)
-
+		// Trigger the initial resize
+		handleResize()
+		window.addEventListener('resize', handleResize)
 		return () => {
-			window.removeEventListener('resize', updateDimension)
+			window.removeEventListener('resize', handleResize)
 		}
-	}, [screenSize])
+	}, [])
+
+	// Don't render until screenSize is determined
+	if (!screenSize) {
+		return null
+	}
+
 	return (
 		<div className="flex">
-			{!(typeof window === 'undefined') && screenSize.width > 1100 && (
+			{screenSize && screenSize.width > 1100 && (
 				<div className="absolute left-0 top-0">
 					<aside className="pl-4 mr-2" style={{ width: `${Math.min(screenSize.width / 2 - 390, 500)}px`, marginTop: '72px' }}>
 						<ul className="space-y-4">

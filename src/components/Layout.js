@@ -61,7 +61,7 @@ const Layout = ({ publication, children }) => {
 									<input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
 									<span className="slideBtnTg round"></span>
 								</label>
-								<button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
+								<button className="bg-emerald-400 dark:bg-emerald-800 text-white font-bold py-2 px-4 rounded" onClick={() => (window.location.href = 'https://mirror.xyz/potham.eth')}>
 									Mirror
 								</button>
 							</div>
