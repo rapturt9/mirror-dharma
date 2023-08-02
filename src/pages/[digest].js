@@ -77,11 +77,11 @@ const Article = ({ publication, darkMode, entry }) => {
           gtag('config', 'G-LR58DS1T5K');
         `}
 			</Script>
-			<article className="max-w-3xl mx-auto py-16 px-4 sm:px-0">
+			<article className="max-w-5xl mx-auto px-4">
 				<header>
 					<h1 className="text-gray-900 dark:text-gray-200 text-3xl sm:text-5xl font-bold">{entry.title}</h1>
 				</header>
-				<div className="prose lg:prose-lg dark:prose-dark pb-10 mt-8">
+				<div className="prose lg:prose-2xl md:prose-xl sm:prose-lg dark:prose-dark pb-10 mt-4 md:mt-8">
 					<ImageSizesContext.Provider value={entry.image_sizes}>
 						<ReactMarkdown renderers={components} transformLinkUri={uriTransformer} allowDangerousHtml={true}>
 							{formatBody(entry.body)}
