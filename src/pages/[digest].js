@@ -10,7 +10,6 @@ import { getPublication } from '@/data/publication'
 import ImageSizesContext from '@/context/image_sizes'
 import highlightCode from '@/utils/highlightMarkdown'
 import { getEntry, getEntryPaths } from '@/data/entries'
-import CommentsSection from '@/components/CommentsSection'
 import { components, uriTransformer } from '@/utils/markdown'
 
 const Article = ({ publication, darkMode, entry }) => {
@@ -27,11 +26,11 @@ const Article = ({ publication, darkMode, entry }) => {
 	return (
 		<>
 			<Head>
-				<title>{entry.title} — Mirror</title>
+				<title>{entry.title || 'Dharma Essays'}</title>
 				<meta name="description" content={metaDescription} />
-				<meta name="og:title" content={`${entry.title} — Mirror`} />
+				<meta name="og:title" content={entry.title || 'Dharma Essays'} />
 				<meta name="og:description" content={metaDescription} />
-				<meta name="twitter:title" content={`${entry.title} — Mirror`} />
+				<meta name="twitter:title" content={entry.title || 'Dharma Essays'} />
 				<meta name="twitter:description" content={metaDescription} />
 				{entry.cover_image && (
 					<>
@@ -41,32 +40,12 @@ const Article = ({ publication, darkMode, entry }) => {
 					</>
 				)}
 			</Head>
-			<article>
+			<article className="max-w-3xl mx-auto py-16 px-4 sm:px-0">
 				<header>
 					<h1 className="text-gray-900 dark:text-gray-200 text-3xl sm:text-5xl font-bold">{entry.title}</h1>
-					<div className="flex flex-wrap items-center my-4 gap-x-4 gap-y-2 max-w-xl">
-						{publication.members.map(contributor => (
-							<div className="flex items-center" key={contributor.address}>
-								<img className="rounded-full w-10 h-10" src={contributor.avatarURL} />
-								<div className="flex items-center tracking-normal text-gray-800 dark:text-gray-400">
-									<div className="flex items-center p-1 leading-5">
-										<p className="mr-2 font-medium">{contributor.displayName}</p>
-										<a className="bg-gray-100 dark:bg-gray-800  rounded-full px-1.5 font-medium text-sm text-gray-400  dark:text-gray-500" href={`https://etherscan.io/address/${contributor.address}`} target="_blank" rel="noreferrer">
-											{contributor.address.substr(0, 6)}
-										</a>
-									</div>
-								</div>
-							</div>
-						))}
-						<div className="flex items-center">
-							<time dateTime={new Date(entry.timestamp * 1000)} className="block bg-gray-100 dark:bg-gray-800 rounded-full px-2 py-0.5 font-medium text-sm text-gray-400 dark:text-gray-500">
-								{timeago(entry.timestamp * 1000)}
-							</time>
-						</div>
-					</div>
 				</header>
 
-				<div className="prose lg:prose-lg dark:prose-dark pb-10">
+				<div className="prose lg:prose-lg dark:prose-dark pb-10 mt-8">
 					<ImageSizesContext.Provider value={entry.image_sizes}>
 						<ReactMarkdown renderers={components} transformLinkUri={uriTransformer} allowDangerousHtml={true}>
 							{entry.body}
@@ -85,9 +64,9 @@ const Article = ({ publication, darkMode, entry }) => {
 					</div>
 				)}
 
-				<CommentsSection className="max-w-prose text-lg mb-16" digest={entry.digest} theme={darkMode ? 'dark' : 'light'} />
+				{/*<CommentsSection className="max-w-prose text-lg mb-16" digest={entry.digest} theme={darkMode ? 'dark' : 'light'} />*/}
 
-				<footer className="border dark:border-gray-800 rounded-lg divide-y dark:divide-gray-800 font-mono max-w-xl mx-auto">
+				{/*<footer className="border dark:border-gray-800 rounded-lg divide-y dark:divide-gray-800 font-mono max-w-xl mx-auto">
 					{entry.transaction && (
 						<a href={`https://viewblock.io/arweave/tx/${entry.transaction}`} target="_blank" rel="noreferrer" className="flex items-center justify-between text-gray-400 dark:text-gray-500 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
 							<div className="flex items-center">
@@ -108,7 +87,7 @@ const Article = ({ publication, darkMode, entry }) => {
 						<p className="uppercase text-xs">Content Digest</p>
 						<p className="text-xs">{formatAddress(entry.digest)}</p>
 					</div>
-				</footer>
+					</footer>*/}
 			</article>
 		</>
 	)

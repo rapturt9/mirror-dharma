@@ -82,7 +82,7 @@ const CommentsSection = ({ digest, theme, className = '' }) => {
 
 	return (
 		<div className={`space-y-8 ${className}`}>
-			<ul role="list" className="space-y-8">
+			{/* <ul role="list" className="space-y-8">
 				{!Array.isArray(comments) ? (
 					<div>loading...</div>
 				) : (
@@ -99,12 +99,12 @@ const CommentsSection = ({ digest, theme, className = '' }) => {
 						</li>
 					))
 				)}
-			</ul>
+			</ul> */}
 			<form onSubmit={publishComment} className="space-y-4">
 				<div className="flex justify-between gap-4">
 					<img className="w-14 h-14 rounded-full flex-shrink-0" alt="profile image" src={userAvatar} />
 					<div className="flex-1">
-						<textarea className="font-medium resize-none w-full outline-none text-lg rounded-xl bg-black border-2 border-gray-800 focus:border-gray-400 p-4 transition h-40 text-gray-400" placeholder="Your comment…" value={comment} onChange={event => setComment(event.target.value)} required />
+						<textarea className="font-medium resize-none w-full outline-none text-lg rounded-xl bg-white border border-gray-200 focus:border-gray-400 p-4 transition h-40 text-gray-400" placeholder="Your comment…" value={comment} onChange={event => setComment(event.target.value)} required />
 					</div>
 				</div>
 				<div className="flex justify-end">

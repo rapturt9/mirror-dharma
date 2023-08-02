@@ -20,7 +20,7 @@ export default async ({ headers: { host } }, res) => {
 		webMaster: 'MirrorXYZ',
 		ttl: 1 * 60, // cache for an hour
 		site_url: `https://${host}/`,
-		generator: 'RSS for Mirror, by Miguel Piedrafita',
+		generator: 'RSS for Dharma Essays',
 		feed_url: `https://${host}/feed.xml`,
 	})
 
