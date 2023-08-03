@@ -12,7 +12,6 @@ import highlightCode from '@/utils/highlightMarkdown'
 import { getEntry, getEntryPaths } from '@/data/entries'
 import { components, uriTransformer } from '@/utils/markdown'
 import Script from 'next/script'
-import { useState } from 'react'
 
 const Article = ({ publication, darkMode, entry, digest }) => {
 	// If there's an image we want to use the second paragraph as the description instead of the first one.
@@ -24,8 +23,6 @@ const Article = ({ publication, darkMode, entry, digest }) => {
 			.use(remarkStringify)
 			.processSync(entry.body.split('\n\n')[entry.cover_image ? 1 : 0])
 	).slice(0, -1)
-	console.log(publication)
-	console.log(entry)
 
 	const formatBody = body => {
 		let bodyLines = body.split('\n')
@@ -41,7 +38,8 @@ const Article = ({ publication, darkMode, entry, digest }) => {
 				bodyLines.pop()
 			}
 		} catch (error) {
-			console.error(error)
+			//console.error(error)
+			return ''
 		}
 
 		return bodyLines.join('\n')
