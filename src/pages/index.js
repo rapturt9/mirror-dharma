@@ -108,28 +108,26 @@ const Index = ({ entries, publication }) => {
 				</div>
 			</div>
 			{screenSize.width < 637 ? (
-				<footer className="bg-gray-100 text-center py-4 fixed bottom-0 left-0 right-0">
-					{' '}
+				<footer className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-center py-4 fixed bottom-0 left-0 right-0">
 					{/* Fixed positioning */}
-					<span className="text-gray-600 inline-flex items-center">
-						<span className="text-red-500 mr-1">❤️</span> this? Shout to me on
+					<span className="inline-flex items-center">
+						<span className="text-red-500 dark:text-red-400 mr-1">❤️</span> this? Shout to me on
 					</span>
-					<a href="https://twitter.com/PothamRam" className="text-blue-500 hover:underline ml-1" target="_blank" rel="noopener noreferrer">
+					<a href="https://twitter.com/PothamRam" className="text-blue-500 dark:text-blue-400 hover:underline ml-1" target="_blank" rel="noopener noreferrer">
 						Twitter
 					</a>
-					<span className="text-gray-600">!</span>
+					<span>!</span>
 				</footer>
 			) : (
-				<footer className="bg-gray-100 text-center py-4 fixed bottom-0 left-0 right-0">
-					{' '}
+				<footer className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-center py-4 fixed bottom-0 left-0 right-0">
 					{/* Fixed positioning */}
-					<span className="text-gray-600 inline-flex items-center">
-						<span className="text-red-500 mr-1">❤️</span> this? Feel free to share your thoughts to me on
+					<span className="inline-flex items-center">
+						<span className="text-red-500 dark:text-red-400 mr-1">❤️</span> this? Feel free to share your thoughts to me on
 					</span>
-					<a href="https://twitter.com/PothamRam" className="text-blue-500 hover:underline ml-1" target="_blank" rel="noopener noreferrer">
+					<a href="https://twitter.com/PothamRam" className="text-blue-500 dark:text-blue-400 hover:underline ml-1" target="_blank" rel="noopener noreferrer">
 						Twitter
 					</a>
-					<span className="text-gray-600">! My DMs are open.</span>
+					<span>! My DMs are open.</span>
 				</footer>
 			)}
 		</div>
