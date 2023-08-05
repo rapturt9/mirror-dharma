@@ -79,7 +79,7 @@ const Article = ({ publication, darkMode, entry, digest }) => {
 						</ReactMarkdown>
 					</ImageSizesContext.Provider>
 				</div>
-				<iframe className="dark:hidden" src={`https://embed.0xecho.com.ipns.page/?color-theme=light&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+				{/*<iframe className="dark:hidden" src={`https://embed.0xecho.com.ipns.page/?color-theme=light&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>*/}
 				<iframe className="hidden dark:block" src={`https://embed.0xecho.com.ipns.page/?color-theme=dark&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>
 				{publication.mailingListURL && (
 					<div className="flex items-center justify-center mb-10">
