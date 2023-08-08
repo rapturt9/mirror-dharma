@@ -80,7 +80,7 @@ const Article = ({ publication, darkMode, entry, digest }) => {
 					</ImageSizesContext.Provider>
 				</div>
 				{/*<iframe className="dark:hidden" src={`https://embed.0xecho.com.ipns.page/?color-theme=light&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>*/}
-				<iframe className="hidden dark:block" src={`https://embed.0xecho.com.ipns.page/?color-theme=dark&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+				{/*<iframe className="hidden dark:block" src={`https://embed.0xecho.com.ipns.page/?color-theme=dark&desc=&has-h-padding=true&has-v-padding=true&modules=comment&receiver=&target_uri=dapp%2Fmirror%2F${digest}&height=800&display=iframe`} width="100%" height="800" frameBorder="0" scrolling="no" allowFullScreen></iframe>*/}
 				{publication.mailingListURL && (
 					<div className="flex items-center justify-center mb-10">
 						<a href={publication.mailingListURL} target="_blank" rel="noreferrer" className="bg-blue-100 dark:bg-yellow-400 dark:bg-opacity-20 font-medium text-blue-500 dark:text-yellow-300 rounded-lg p-4 hover:ring-4 ring-blue-100 dark:ring-yellow-400 dark:ring-opacity-20 transition duration-300 text-base shadow-xs hover:shadow-xs sm:text-lg sm:px-10 inline-flex items-center space-x-2">
